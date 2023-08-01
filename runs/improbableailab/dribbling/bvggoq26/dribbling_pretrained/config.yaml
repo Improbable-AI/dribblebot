@@ -1,0 +1,741 @@
+AC_Args:
+  activation: elu
+  actor_hidden_dims:
+  - 512
+  - 256
+  - 128
+  adaptation_dims: []
+  adaptation_labels: []
+  adaptation_module_branch_hidden_dims:
+  - 256
+  - 128
+  adaptation_weights: []
+  critic_hidden_dims:
+  - 512
+  - 256
+  - 128
+  init_noise_std: 1
+  use_decoder: false
+Cfg:
+  asset:
+    angular_damping: 0
+    armature: 0
+    collapse_fixed_joints: true
+    default_dof_drive_mode: 3
+    density: 0.001
+    disable_gravity: false
+    file: '{MINI_GYM_ROOT_DIR}/resources/robots/go1/urdf/go1.urdf'
+    fix_base_link: false
+    flip_visual_attachments: false
+    foot_name: foot
+    linear_damping: 0
+    max_angular_velocity: 1000
+    max_linear_velocity: 1000
+    penalize_contacts_on:
+    - thigh
+    - calf
+    replace_cylinder_with_capsule: true
+    self_collisions: 0
+    terminate_after_contacts_on: []
+    thickness: 0.01
+  ball:
+    asset: ball
+    ball_init_ang_vel:
+    - 0
+    - 0
+    - 0
+    ball_init_lin_vel:
+    - 0
+    - 0
+    - 0
+    ball_init_pos:
+    - 0
+    - 0
+    - 0.5
+    ball_init_rot:
+    - 0
+    - 0
+    - 0
+    - 1
+    init_pos_range:
+    - 1
+    - 1
+    - 0.2
+    init_vel_range:
+    - 0.5
+    - 0.5
+    - 0.3
+    mass: 0.318
+    pos_reset_prob: 0.0002
+    pos_reset_range:
+    - 1
+    - 1
+    - 0
+    radius: 0.0889
+    vel_reset_prob: 0.0008
+    vel_reset_range:
+    - 0.3
+    - 0.3
+    - 0.3
+    vision_receive_prob: 0.7
+  commands:
+    ang_vel_step: 0.3
+    ang_vel_yaw:
+    - 0
+    - 0
+    aux_reward_coef_range:
+    - 0
+    - 0.01
+    balance_gait_distribution: false
+    binary_phases: false
+    body_height_cmd:
+    - -0.05
+    - 0.05
+    body_pitch_range:
+    - 0
+    - 0
+    body_roll_range:
+    - 0
+    - 0
+    command_curriculum: true
+    compliance_range:
+    - 0
+    - 0.01
+    curriculum_seed: 100
+    curriculum_type: RewardThresholdCurriculum
+    distribution_update_extension_distance: 1
+    distributional_commands: true
+    exclusive_command_sampling: false
+    exclusive_phase_offset: false
+    footswing_height_range:
+    - 0.09
+    - 0.09
+    gait_bound_cmd_range:
+    - 0
+    - 0
+    gait_duration_cmd_range:
+    - 0.5
+    - 0.5
+    gait_frequency_cmd_range:
+    - 3
+    - 3
+    gait_interval_s: 10
+    gait_offset_cmd_range:
+    - 0
+    - 0
+    gait_phase_cmd_range:
+    - 0.5
+    - 0.5
+    gaitwise_curricula: false
+    global_reference: false
+    heading:
+    - -3.14
+    - 3.14
+    heading_command: false
+    impulse_height_commands: false
+    jump_duration_s: 0.1
+    jump_height: 0.3
+    jump_interval_s: 20
+    limit_aux_reward_coef:
+    - 0
+    - 0.01
+    limit_body_height:
+    - -0.05
+    - 0.05
+    limit_body_pitch:
+    - 0
+    - 0
+    limit_body_roll:
+    - 0
+    - 0
+    limit_compliance:
+    - 0
+    - 0.01
+    limit_footswing_height:
+    - 0.09
+    - 0.09
+    limit_gait_bound:
+    - 0
+    - 0
+    limit_gait_duration:
+    - 0.5
+    - 0.5
+    limit_gait_frequency:
+    - 3
+    - 3
+    limit_gait_offset:
+    - 0
+    - 0
+    limit_gait_phase:
+    - 0.5
+    - 0.5
+    limit_stance_length:
+    - 0
+    - 0.1
+    limit_stance_width:
+    - 0
+    - 0.1
+    limit_vel_x:
+    - -1.5
+    - 1.5
+    limit_vel_y:
+    - -1.5
+    - 1.5
+    limit_vel_yaw:
+    - 0
+    - 0
+    lin_vel_step: 0.3
+    lin_vel_x:
+    - -1.5
+    - 1.5
+    lin_vel_y:
+    - -1.5
+    - 1.5
+    lipschitz_threshold: 0.9
+    max_forward_curriculum: 1
+    max_reverse_curriculum: 1
+    max_yaw_curriculum: 1
+    num_ang_vel_bins: 30
+    num_bins_aux_reward_coef: 1
+    num_bins_body_height: 1
+    num_bins_body_pitch: 1
+    num_bins_body_roll: 1
+    num_bins_compliance: 1
+    num_bins_footswing_height: 1
+    num_bins_gait_bound: 1
+    num_bins_gait_duration: 1
+    num_bins_gait_frequency: 1
+    num_bins_gait_offset: 1
+    num_bins_gait_phase: 1
+    num_bins_stance_length: 1
+    num_bins_stance_width: 1
+    num_bins_vel_x: 1
+    num_bins_vel_y: 1
+    num_bins_vel_yaw: 1
+    num_commands: 15
+    num_lin_vel_bins: 30
+    observe_accel: false
+    pacing_offset: false
+    resampling_time: 7
+    stance_length_range:
+    - 0
+    - 0.1
+    stance_width_range:
+    - 0
+    - 0.1
+    subsample_gait: false
+    vel_interval_s: 10
+    yaw_command_curriculum: false
+  control:
+    action_scale: 0.25
+    control_type: actuator_net
+    damping:
+      joint: 0.5
+    decimation: 4
+    hip_scale_reduction: 0.5
+    stiffness:
+      joint: 20
+  curriculum_thresholds:
+    dribbling_ball_vel: 0.8
+    tracking_ang_vel: 0.7
+    tracking_contacts_shaped_force: 0.9
+    tracking_contacts_shaped_vel: 0.9
+    tracking_lin_vel: 0.8
+  domain_rand:
+    Kd_factor_range:
+    - 0.5
+    - 1.5
+    Kp_factor_range:
+    - 0.8
+    - 1.3
+    added_mass_range:
+    - -1
+    - 3
+    ball_drag_rand_interval_s: 15
+    ball_friction_range:
+    - 0.5
+    - 1
+    ball_restitution_range:
+    - 0.5
+    - 1
+    com_displacement_range:
+    - -0.15
+    - 0.15
+    drag_range:
+    - -0.1
+    - 0.8
+    friction_range:
+    - 0
+    - 1.5
+    gravity_impulse_duration: 0.99
+    gravity_rand_interval_s: 8
+    gravity_range:
+    - -1
+    - 1
+    ground_friction_range:
+    - 0.7
+    - 4
+    ground_restitution_range:
+    - 0
+    - 1
+    lag_timesteps: 6
+    max_push_vel_xy: 0.5
+    motor_offset_range:
+    - -0.002
+    - 0.002
+    motor_strength_range:
+    - 0.99
+    - 1.01
+    push_interval_s: 15
+    push_robots: false
+    rand_interval_s: 6
+    randomize_Kd_factor: true
+    randomize_Kp_factor: true
+    randomize_ball_drag: true
+    randomize_ball_friction: false
+    randomize_ball_restitution: false
+    randomize_base_mass: true
+    randomize_com_displacement: false
+    randomize_friction: false
+    randomize_friction_indep: false
+    randomize_gravity: false
+    randomize_ground_friction: true
+    randomize_ground_restitution: false
+    randomize_lag_timesteps: true
+    randomize_motor_offset: true
+    randomize_motor_strength: true
+    randomize_restitution: false
+    randomize_rigids_after_start: false
+    randomize_tile_roughness: false
+    restitution: 0.5
+    restitution_range:
+    - 0
+    - 0.4
+    tile_roughness_range:
+    - 0
+    - 0
+  env:
+    add_balls: true
+    env_spacing: 3
+    episode_length_s: 40
+    num_actions: 12
+    num_envs: 1000
+    num_observation_history: 15
+    num_observations: 75
+    num_privileged_obs: 6
+    num_recording_envs: 1
+    priv_observe_ball_drag: true
+    record_video: true
+    recording_height_px: 240
+    recording_mode: COLOR
+    recording_width_px: 360
+    send_timeouts: true
+  init_state:
+    ang_vel:
+    - 0
+    - 0
+    - 0
+    default_joint_angles:
+      FL_calf_joint: -1.5
+      FL_hip_joint: 0.1
+      FL_thigh_joint: 0.8
+      FR_calf_joint: -1.5
+      FR_hip_joint: -0.1
+      FR_thigh_joint: 0.8
+      RL_calf_joint: -1.5
+      RL_hip_joint: 0.1
+      RL_thigh_joint: 1
+      RR_calf_joint: -1.5
+      RR_hip_joint: -0.1
+      RR_thigh_joint: 1
+    lin_vel:
+    - 0
+    - 0
+    - 0
+    pos:
+    - 0
+    - 0
+    - 0.34
+    rot:
+    - 0
+    - 0
+    - 0
+    - 1
+  noise:
+    add_noise: true
+    noise_level: 1
+  noise_scales:
+    ang_vel: 0.2
+    ball_pos: 0.05
+    contact_states: 0.05
+    depth_image: 0
+    dof_pos: 0.01
+    dof_vel: 1.5
+    friction_measurements: 0
+    gravity: 0.05
+    height_measurements: 0.1
+    imu: 0.1
+    lin_vel: 0.1
+    rgb_image: 0
+    segmentation_image: 0
+  normalization:
+    Kd_factor_range:
+    - 0.5
+    - 1.5
+    Kp_factor_range:
+    - 0.8
+    - 1.3
+    added_mass_range:
+    - -1
+    - 3
+    ball_drag_range:
+    - 0
+    - 1
+    ball_velocity_range:
+    - -5
+    - 5
+    body_height_range:
+    - 0
+    - 0.6
+    body_velocity_range:
+    - -6
+    - 6
+    clip_actions: 10
+    clip_observations: 100
+    com_displacement_range:
+    - -0.1
+    - 0.1
+    contact_force_range:
+    - 0
+    - 50
+    contact_state_range:
+    - 0
+    - 1
+    foot_height_range:
+    - 0
+    - 0.15
+    friction_range:
+    - 0
+    - 1
+    gravity_range:
+    - -1
+    - 1
+    ground_friction_range:
+    - 0.7
+    - 4
+    joint_friction_range:
+    - 0
+    - 0.7
+    motion:
+    - -0.01
+    - 0.01
+    motor_offset_range:
+    - -0.05
+    - 0.05
+    motor_strength_range:
+    - 0.9
+    - 1.1
+    restitution_range:
+    - 0
+    - 1
+    roughness_range:
+    - 0
+    - 0.1
+    stair_height_range:
+    - 0
+    - 0.3
+    stair_ori_range:
+    - -3.14
+    - 3.14
+    stair_run_range:
+    - 0
+    - 0.5
+  obs_scales:
+    ang_vel: 0.25
+    aux_reward_cmd: 1
+    ball_pos: 1
+    body_height_cmd: 2
+    body_pitch_cmd: 0.3
+    body_roll_cmd: 0.3
+    compliance_cmd: 1
+    depth_image: 1
+    dof_pos: 1
+    dof_vel: 0.05
+    footswing_height_cmd: 0.15
+    friction_measurements: 1
+    gait_freq_cmd: 1
+    gait_phase_cmd: 1
+    height_measurements: 5
+    imu: 0.1
+    lin_vel: 2
+    rgb_image: 1
+    segmentation_image: 1
+    stance_length_cmd: 1
+    stance_width_cmd: 1
+  perception:
+    camera_names:
+    - front
+    - left
+    - right
+    - bottom
+    - rear
+    camera_poses:
+    - - 0.3
+      - 0
+      - 0
+    - - 0
+      - 0.15
+      - 0
+    - - 0
+      - -0.15
+      - 0
+    - - 0.1
+      - 0
+      - -0.1
+    - - -0.2
+      - 0
+      - -0.1
+    camera_rpys:
+    - - 0
+      - 0
+      - 0
+    - - 0
+      - 0
+      - 1.57
+    - - 0
+      - 0
+      - -1.57
+    - - 0
+      - -1.57
+      - 0
+    - - 0
+      - -1.57
+      - 0
+    compute_depth: false
+    compute_frictions: false
+    compute_heights: false
+    compute_rgb: false
+    compute_roughnesses: false
+    compute_segmentation: false
+    image_height: 100
+    image_horizontal_fov: 110
+    image_width: 100
+    measure_frictions: false
+    measure_heights: false
+    measure_roughnesses: false
+  reward_scales:
+    action_rate: -0.01
+    action_smoothness_1: -0.1
+    action_smoothness_2: -0.1
+    ang_vel_xy: 0
+    base_height: 0
+    base_motion: 0
+    collision: -5
+    dof_acc: -2.5e-07
+    dof_pos: -0.05
+    dof_pos_limits: -10
+    dof_vel: -0.0001
+    dof_vel_limits: 0
+    dribbling_ball_vel: 4
+    dribbling_ball_vel_angle: 4
+    dribbling_ball_vel_norm: 4
+    dribbling_robot_ball_pos: 4
+    dribbling_robot_ball_vel: 0.5
+    dribbling_robot_ball_yaw: 4
+    energy: 0
+    energy_expenditure: 0
+    estimation_bonus: 0
+    feet_accel: 0
+    feet_air_time: 0
+    feet_contact_forces: 0
+    feet_impact_vel: 0
+    feet_slip: 0
+    feet_stumble: 0
+    gripper_handle_height: 0
+    gripper_handle_pos: 0
+    jump: 0
+    lin_vel_z: 0
+    open_door: 0
+    orientation: -5
+    raibert_heuristic: 0
+    robot_door_ori: 0
+    robot_door_pos: 0
+    stand_still: 0
+    survival: 0
+    termination: 0
+    torque_limits: 0
+    torques: -0.0001
+    tracking_ang_vel: 0
+    tracking_contacts: 0
+    tracking_contacts_shaped: 0
+    tracking_contacts_shaped_force: 4
+    tracking_contacts_shaped_vel: 4
+    tracking_lin_vel: 0
+    tracking_lin_vel_lat: 0
+    tracking_lin_vel_long: 0
+    turn_handle: 0
+  rewards:
+    base_height_target: 0.34
+    constrict: false
+    constrict_after: 0
+    constrict_indices: []
+    constrict_ranges:
+    - []
+    estimation_bonus_dims: []
+    estimation_bonus_weights: []
+    footswing_height: 0.09
+    front_target:
+    - - 0.17
+      - -0.09
+      - 0
+    gait_force_sigma: 100
+    gait_vel_sigma: 10
+    kappa_gait_probs: 0.07
+    max_contact_force: 100
+    only_positive_rewards: false
+    only_positive_rewards_ji22_style: true
+    reward_container_name: SoccerRewards
+    sigma_rew_neg: 0.02
+    soft_dof_pos_limit: 0.9
+    soft_dof_vel_limit: 1
+    soft_torque_limit: 1
+    terminal_body_height: 0.2
+    terminal_body_ori: 0.5
+    tracking_sigma: 0.25
+    tracking_sigma_lat: 0.25
+    tracking_sigma_long: 0.25
+    tracking_sigma_yaw: 0.25
+    use_terminal_body_height: true
+    use_terminal_roll_pitch: false
+  robot:
+    name: go1
+  sensors:
+    privileged_sensor_args:
+      BodyVelocitySensor: {}
+      ObjectVelocitySensor: {}
+    privileged_sensor_names:
+      BodyVelocitySensor: {}
+      ObjectVelocitySensor: {}
+    sensor_args:
+      ActionSensor: {}
+      ClockSensor: {}
+      JointPositionSensor: {}
+      JointVelocitySensor: {}
+      LastActionSensor:
+        delay: 1
+      ObjectSensor: {}
+      OrientationSensor: {}
+      RCSensor: {}
+      TimingSensor: {}
+      YawSensor: {}
+    sensor_names:
+    - ObjectSensor
+    - OrientationSensor
+    - RCSensor
+    - JointPositionSensor
+    - JointVelocitySensor
+    - ActionSensor
+    - LastActionSensor
+    - ClockSensor
+    - YawSensor
+    - TimingSensor
+  sim:
+    dt: 0.005
+    gravity:
+    - 0
+    - 0
+    - -9.81
+    physx:
+      bounce_threshold_velocity: 0.5
+      contact_collection: 2
+      contact_offset: 0.01
+      default_buffer_size_multiplier: 5
+      max_depenetration_velocity: 1
+      max_gpu_contact_pairs: 8388608
+      num_position_iterations: 4
+      num_threads: 10
+      num_velocity_iterations: 0
+      rest_offset: 0
+      solver_type: 1
+    substeps: 1
+    up_axis: 1
+    use_gpu_pipeline: true
+  terrain:
+    border_size: 0
+    center_robots: false
+    center_span: 3
+    curriculum: false
+    difficulty_scale: 1
+    dynamic_friction: 1
+    horizontal_scale: 0.05
+    max_init_terrain_level: 1
+    max_platform_height: 0.2
+    max_step_height: 0.26
+    max_step_run: 0.4
+    measure_heights: false
+    mesh_type: boxes_tm
+    min_init_terrain_level: 0
+    min_step_run: 0.25
+    num_border_boxes: 5
+    num_cols: 20
+    num_rows: 20
+    restitution: 0
+    slope_treshold: 0.75
+    static_friction: 1
+    teleport_robots: false
+    teleport_thresh: 0.3
+    terrain_length: 5
+    terrain_noise_magnitude: 0
+    terrain_proportions:
+    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    terrain_smoothness: 0.005
+    terrain_width: 5
+    vertical_scale: 0.005
+    x_init_offset: 0
+    x_init_range: 0.2
+    y_init_offset: 0
+    y_init_range: 0.2
+    yaw_init_range: 3.14
+  viewer:
+    lookat:
+    - 11
+    - 5
+    - 3
+    pos:
+    - 10
+    - 0
+    - 6
+    ref_env: 0
+PPO_Args:
+  adaptation_module_learning_rate: 0.001
+  clip_param: 0.2
+  desired_kl: 0.01
+  entropy_coef: 0.01
+  gamma: 0.99
+  lam: 0.95
+  learning_rate: 0.001
+  max_grad_norm: 1
+  num_adaptation_module_substeps: 1
+  num_learning_epochs: 5
+  num_mini_batches: 4
+  schedule: adaptive
+  selective_adaptation_module_loss: false
+  use_clipped_value_loss: true
+  value_loss_coef: 1
+RunnerArgs:
+  algorithm_class_name: RMA
+  checkpoint: -1
+  load_run: -1
+  log_freq: 10
+  max_iterations: 1500
+  num_steps_per_env: 24
+  resume: true
+  resume_checkpoint: tmp/legged_data/ac_weights_last.pt
+  resume_curriculum: true
+  resume_path: improbableailab/dribbling/j34kr9ds
+  save_interval: 400
+  save_video_interval: 500
