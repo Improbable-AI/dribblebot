@@ -82,6 +82,10 @@ class LeggedRobot(BaseTask):
                     self.torques[:, self.num_actuated_dof:] = asset_torques
                 if asset_forces is not None:
                     self.forces[:, self.num_bodies:self.num_bodies + self.num_object_bodies] = asset_forces
+
+            if self.cfg.domain_rand.randomize_ball_drag:
+                self._apply_drag_force(self.forces)
+            
             self.gym.set_dof_actuation_force_tensor(self.sim, gymtorch.unwrap_tensor(self.torques))
             self.gym.apply_rigid_body_force_tensors(self.sim, gymtorch.unwrap_tensor(self.forces), None, gymapi.GLOBAL_SPACE)
             self.gym.simulate(self.sim)
@@ -403,11 +407,9 @@ class LeggedRobot(BaseTask):
                                     requires_grad=False) * (max_drag - min_drag) + min_drag
             self.ball_drags[:, :]  = ball_drags.unsqueeze(1)
 
-    def _apply_drag_force(self):
+    def _apply_drag_force(self, force_tensor):
         if self.cfg.domain_rand.randomize_ball_drag:
-            force_tensor = torch.zeros((self.num_envs, self.num_bodies + 1, 3), dtype=torch.float32, device="cuda:0")
-            force_tensor[:, self.num_bodies, :2] = - self.ball_drags * torch.square(self.ball_lin_vel[:, :2]) * torch.sign(self.ball_lin_vel[:, :2])
-            self.gym.apply_rigid_body_force_tensors(self.sim, gymtorch.unwrap_tensor(force_tensor), None, gymapi.GLOBAL_SPACE)
+            force_tensor[:, self.num_bodies, :2] = - self.ball_drags * torch.square(self.object_lin_vel[:, :2]) * torch.sign(self.object_lin_vel[:, :2])
 
     def _process_rigid_shape_props(self, props, env_id):
         """ Callback allowing to store/change/randomize the rigid shape properties of each environment.

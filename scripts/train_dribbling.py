@@ -93,7 +93,7 @@ def train_go1(headless=True):
     Cfg.domain_rand.randomize_Kp_factor = True
     Cfg.domain_rand.randomize_Kd_factor = True
     Cfg.domain_rand.randomize_ball_drag = True
-    Cfg.domain_rand.drag_range = [-0.1, 0.8]
+    Cfg.domain_rand.drag_range = [0.1, 0.8]
     Cfg.domain_rand.ball_drag_rand_interval_s = 15.0
 
     Cfg.env.num_observation_history = 15
